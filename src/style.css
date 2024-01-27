@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import './open-color.css';
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: var(--oc-gray-0);
+  background-color: var(--oc-gray-9);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  font-weight: 500;
+  color: var(--oc-indigo-2);
+  text-decoration: inherit;
+}
+a:hover {
+  color: var(--oc-indigo-2);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  text-align: center;
+}
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  margin-bottom: 5vh;
+  color: var(--oc-indigo-7);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: var(--oc-gray-0);
+  }
+  a:hover {
+    color: var(--oc-indigo-2);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: var(--oc-gray-9);
+    background-color: var(--oc-gray-9);
+  }
+
+  .modified-letter-container {
+    color: var(--oc-gray-3);
+    border: 1px solid var(--oc-gray-6);
+  }
+
+  .modified-letter-container .modified-letter {
+    color: var(--oc-gray-8);
+  }
+
+  h1 {
+    color: var(--oc-blue-4);
+  }
+}
+
+.container {
+  width: 80%;
+  max-width: 600px;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+}
+
+.modified-letter-container {
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: left;
+  width: 100%;
+}
