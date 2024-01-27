@@ -17,10 +17,11 @@
 }
 
 #root {
-  width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  width: 100%;
 }
 
 * {
@@ -43,11 +44,12 @@ body {
   padding: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   min-width: 320px;
   min-height: 100vh;
   text-align: center;
 }
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -85,6 +87,15 @@ h1 {
   }
 }
 
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin: auto;
+}
+
 .container {
   width: 80%;
   max-width: 600px;
@@ -99,4 +110,10 @@ h1 {
   border-radius: 5px;
   text-align: left;
   width: 100%;
+}
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  margin-bottom: 2vh;
 }
