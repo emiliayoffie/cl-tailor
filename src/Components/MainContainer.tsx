@@ -19,22 +19,24 @@ const MainContainer = () => {
 
   return (
     <React.Fragment>
-      {appState === 'old' ? (
-        <ViewCurrentScreen
-          modifiedLetter={modifiedLetter}
-          setModifiedLetter={setModifiedLetter}
-          switchToCreateNewScreen={switchToCreateNewScreen}
-        />
-      ) : (
-        <CreateNewScreen
-          switchToViewCurrentScreen={switchToViewCurrentScreen}
-          setModifiedLetter={setModifiedLetter}
-          coverLetter={coverLetter}
-          setCoverLetter={setCoverLetter}
-          companyName={companyName}
-          setCompanyName={setCompanyName}
-        />
-      )}
+      <div className="main-container">
+        {appState === 'old' ? (
+          <ViewCurrentScreen
+            modifiedLetter={modifiedLetter}
+            setModifiedLetter={setModifiedLetter}
+            switchToCreateNewScreen={switchToCreateNewScreen}
+          />
+        ) : (
+          <CreateNewScreen
+            switchToViewCurrentScreen={switchToViewCurrentScreen}
+            setModifiedLetter={setModifiedLetter}
+            coverLetter={coverLetter}
+            setCoverLetter={setCoverLetter}
+            companyName={companyName}
+            setCompanyName={setCompanyName}
+          />
+        )}
+      </div>
     </React.Fragment>
   );
 };
