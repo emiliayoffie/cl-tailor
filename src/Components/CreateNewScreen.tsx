@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { handleCoverLetterChange, handleCompanyNameChange, handleSubmit } from '../utils';
+import {
+  handleCoverLetterChange,
+  handleCompanyNameChange,
+  handleSubmit,
+} from '../utils';
 import Button from '@mui/material/Button';
 import VariantButtonGroup from './Buttons/VariantButtonGroup';
 import TextField from '@mui/material/TextField';
+import { useTheme } from '@mui/material/styles';
 
 interface createNewScreenProps {
   switchToViewCurrentScreen: () => void;
@@ -21,6 +26,8 @@ const CreateNewScreen = ({
   companyName,
   setCompanyName,
 }: createNewScreenProps) => {
+  const theme = useTheme();
+
   const [coverLetterError, setCoverLetterError] = useState(false);
   const [companyNameError, setCompanyNameError] = useState(false);
 
@@ -38,12 +45,16 @@ const CreateNewScreen = ({
   };
 
   const button = [
-    <Button onClick={generateLetter}>Generate Letter</Button>
+    <Button
+      style={{ color: theme.palette.secondary.main }}
+      onClick={generateLetter}
+    >
+      Generate Letter
+    </Button>,
   ];
 
   return (
     <div className="container">
-      <h1>Cover Letter Tailor</h1>
       <div className="initial-screen">
         <TextField
           label="Cover Letter Template"
@@ -56,9 +67,29 @@ const CreateNewScreen = ({
           variant="outlined"
           fullWidth
           margin="normal"
-          sx={{ maxWidth: '75%' }}
+          sx={{
+            maxWidth: '75%',
+            '& .MuiInputBase-input': {
+              color: theme.palette.secondary.main,
+            },
+            '& .MuiInputBase-input::placeholder': {
+              color: theme.palette.secondary.light,
+              opacity: 1,
+            },
+            '& .MuiOutlinedInput-root': {
+              '& fieldset': {
+                borderColor: theme.palette.secondary.main, // Default state
+              },
+              '&:hover fieldset': {
+                borderColor: theme.palette.secondary.dark, // Hover state
+              },
+              '&.Mui-focused fieldset': {
+                borderColor: theme.palette.secondary.main, // Focus state
+              },
+            },
+          }}
           error={coverLetterError}
-          helperText={coverLetterError ? "Cover letter cannot be empty" : ""}
+          helperText={coverLetterError ? 'Cover letter cannot be empty' : ''}
         />
         <TextField
           label="Company Name"
@@ -70,9 +101,29 @@ const CreateNewScreen = ({
           variant="outlined"
           fullWidth
           margin="normal"
-          sx={{ maxWidth: '75%' }}
+          sx={{
+            maxWidth: '75%',
+            '& .MuiInputBase-input': {
+              color: theme.palette.secondary.main,
+            },
+            '& .MuiInputBase-input::placeholder': {
+              color: theme.palette.secondary.light,
+              opacity: 1,
+            },
+            '& .MuiOutlinedInput-root': {
+              '& fieldset': {
+                borderColor: theme.palette.secondary.main, // Default state
+              },
+              '&:hover fieldset': {
+                borderColor: theme.palette.secondary.dark, // Hover state
+              },
+              '&.Mui-focused fieldset': {
+                borderColor: theme.palette.secondary.main, // Focus state
+              },
+            },
+          }}
           error={companyNameError}
-          helperText={companyNameError ? "Company name cannot be empty" : ""}
+          helperText={companyNameError ? 'Company name cannot be empty' : ''}
         />
         <VariantButtonGroup buttons={button} />
       </div>
