@@ -54,7 +54,6 @@ const ViewCurrentScreen = ({
 
   return (
     <div className="container">
-      <h1>Cover Letter Tailor</h1>
       <GroupSizesColors buttons={buttons} />
       {modifiedLetter && (
         <>
@@ -76,7 +75,7 @@ const ViewCurrentScreen = ({
               variant="outlined"
               fullWidth
               InputProps={{
-                style: { minHeight: '100px' }, // Adjust initial height as needed
+                style: { minHeight: '100px' }, 
               }}
             />
             <Tooltip title={isCopied ? "Copied!" : "Copy to Clipboard"}>
