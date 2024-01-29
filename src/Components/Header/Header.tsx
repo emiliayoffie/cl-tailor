@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
-import GroupSizesColors from './Buttons/GroupSizesColors';
+import GroupSizesColors from '../Buttons/GroupSizesColors';
 import { useTheme } from '@mui/material/styles';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import ThemeToggle from './Buttons/ThemeToggle';
-import { ColorModeContext } from './ToggleColorMode';
+import ThemeToggle from '../Buttons/ThemeToggle';
+import { ColorModeContext } from '../Theme/ToggleColorMode';
 
 type headerProps = {
   onHowToUseClick: () => void;

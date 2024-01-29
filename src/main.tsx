@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import '../styles.css';
-import ToggleColorMode from './Components/ToggleColorMode.tsx';
+import ToggleColorMode from './Components/Theme/ToggleColorMode.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

@@ -1,7 +1,4 @@
-import { useTheme } from '@mui/material/styles';
-
 const Footer = () => {
-  const theme = useTheme();
   return (
     <footer style={{ 
       display: 'flex', 
