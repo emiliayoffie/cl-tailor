@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { jsPDF } from 'jspdf';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -12,16 +14,14 @@ import GroupSizesColors from './Buttons/GroupSizesColors';
 type ViewCurrentScreenProps = {
   modifiedLetter: string;
   setModifiedLetter: React.Dispatch<React.SetStateAction<string>>;
-  switchToCreateNewScreen: () => void;
 };
 
 const ViewCurrentScreen = ({
   modifiedLetter,
-  switchToCreateNewScreen,
   setModifiedLetter,
 }: ViewCurrentScreenProps) => {
-
   const [isCopied, setIsCopied] = useState(false);
+  const navigate = useNavigate();
 
   const copyToClipboard = async () => {
     try {
@@ -48,8 +48,12 @@ const ViewCurrentScreen = ({
   };
 
   const buttons = [
-    <Button key="download" onClick={downloadPDF}>Download PDF</Button>,
-    <Button key="new" onClick={switchToCreateNewScreen}>Create New</Button>
+    <Button key="download" onClick={downloadPDF}>
+      Download PDF
+    </Button>,
+    <Button key="new" onClick={() => navigate('/')}>
+      Create New
+    </Button>,
   ];
 
   return (
@@ -75,20 +79,24 @@ const ViewCurrentScreen = ({
               variant="outlined"
               fullWidth
               InputProps={{
-                style: { minHeight: '100px' }, 
+                style: { minHeight: '100px' },
               }}
             />
-            <Tooltip title={isCopied ? "Copied!" : "Copy to Clipboard"}>
+            <Tooltip title={isCopied ? 'Copied!' : 'Copy to Clipboard'}>
               <IconButton
                 sx={{
                   position: 'absolute',
                   right: '10px',
                   top: '10px',
-                  color: isCopied ? 'green' : 'inherit'
+                  color: isCopied ? 'green' : 'inherit',
                 }}
                 onClick={copyToClipboard}
               >
-                {isCopied ? <CheckCircleOutlineIcon /> : <FileCopyOutlinedIcon />}
+                {isCopied ? (
+                  <CheckCircleOutlineIcon />
+                ) : (
+                  <FileCopyOutlinedIcon />
+                )}
               </IconButton>
             </Tooltip>
           </Box>

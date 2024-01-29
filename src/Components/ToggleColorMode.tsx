@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import App from './App';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { PaletteMode } from '@mui/material';
 import { green, yellow, blue, pink, grey, red, teal } from '@mui/material/colors';
@@ -10,16 +11,16 @@ export const ColorModeContext = React.createContext({ toggleColorMode: () => {} 
 const getDesignTokens = (mode: PaletteMode) => ({
     palette: {
       mode,
-      primary: mode === 'light' ? blue : teal,
+      primary: mode === 'light' ? { main: '#0091ea' } : { main: '#f06292' },
       secondary: mode === 'light' ? { main: blue[300] } : { main: blue[300] },
-      error: mode === 'light' ? { main: red[900] } : {main: red[900] },
+      error: mode === 'light' ? { main: red[500] } : {main: pink[400] },
       background: {
-        default: mode === 'light' ? grey[900] : grey[900],
+        default: mode === 'light' ? '#eeeeee' : '#403841',
         // paper: mode === 'light' ? pink[100] : pink[100],
       },
       text: {
-        primary: mode === 'light' ? blue[100] : blue[100],
-        secondary: mode === 'light' ? blue[100] : blue[100],
+        primary: mode === 'light' ? blue[700] : blue[100],
+        secondary: mode === 'light' ? blue[400] : blue[100],
       },
     },
   });
@@ -41,6 +42,7 @@ export const ToggleColorMode = () => {
     return (
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
+        <CssBaseline/>
           <App/>
         </ThemeProvider>
       </ColorModeContext.Provider>

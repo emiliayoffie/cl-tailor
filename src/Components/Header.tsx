@@ -17,14 +17,14 @@ const Header = ({ onHowToUseClick }: headerProps) => {
   const buttons = [
     <>
       <Link to="/" style={{ textDecoration: 'none' }}>
-        <Button key="home" style={{ color: theme.palette.secondary.main }}>
+        <Button key="home" style={{ color: '#eeeeee' }}>
           Home
         </Button>
       </Link>
       <Link to="/how-to-use" style={{ textDecoration: 'none' }}>
         <Button
           key="how-to-use"
-          style={{ color: theme.palette.secondary.main }}
+          style={{ color: '#ffb74d' }}
           onClick={onHowToUseClick}
         >
           How to Use
@@ -32,7 +32,7 @@ const Header = ({ onHowToUseClick }: headerProps) => {
       </Link>
       <Button
         key="star-on-github"
-        style={{ color: theme.palette.secondary.main }}
+        style={{ color: '#aed581' }}
         startIcon={<GitHubIcon sx={{ fontSize: 28 }} />}
         component="a"
         sx={{ textTransform: 'none' }}

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   handleCoverLetterChange,
   handleCompanyNameChange,
@@ -10,7 +11,6 @@ import TextField from '@mui/material/TextField';
 import { useTheme } from '@mui/material/styles';
 
 interface createNewScreenProps {
-  switchToViewCurrentScreen: () => void;
   setModifiedLetter: React.Dispatch<React.SetStateAction<string>>;
   coverLetter: string;
   setCoverLetter: React.Dispatch<React.SetStateAction<string>>;
@@ -19,7 +19,6 @@ interface createNewScreenProps {
 }
 
 const CreateNewScreen = ({
-  switchToViewCurrentScreen,
   setModifiedLetter,
   coverLetter,
   setCoverLetter,
@@ -27,9 +26,14 @@ const CreateNewScreen = ({
   setCompanyName,
 }: createNewScreenProps) => {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const [coverLetterError, setCoverLetterError] = useState(false);
   const [companyNameError, setCompanyNameError] = useState(false);
+
+  useEffect(() => {
+    setCompanyName('');
+  }, [setCompanyName]);
 
   const generateLetter = () => {
     const isCoverLetterEmpty = !coverLetter.trim();
@@ -40,13 +44,13 @@ const CreateNewScreen = ({
 
     if (!isCoverLetterEmpty && !isCompanyNameEmpty) {
       handleSubmit(coverLetter, companyName, setModifiedLetter);
-      switchToViewCurrentScreen();
+      navigate('/generate');
     }
   };
 
   const button = [
     <Button
-      style={{ color: theme.palette.secondary.main }}
+      style={{ color: theme.palette.primary.main }}
       onClick={generateLetter}
     >
       Generate Letter
