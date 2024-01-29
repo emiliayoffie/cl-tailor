@@ -8,7 +8,7 @@ const Footer = () => {
       flexDirection: 'column', 
       alignItems: 'center', 
       gap: '10px',
-      color: theme.palette.text.primary 
+      color: '#eeeeee'
     }}>
       <div>
         Built by{' '}
@@ -17,7 +17,7 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
           style={{
-            color: theme.palette.primary.main, 
+            color: '#aed581', 
             textDecoration: 'none' 
           }}
         >

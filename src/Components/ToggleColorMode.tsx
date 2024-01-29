@@ -4,7 +4,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { PaletteMode } from '@mui/material';
-import { green, yellow, blue, pink, grey, red, teal } from '@mui/material/colors';
+import { blue, red } from '@mui/material/colors';
 
 export const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -13,10 +13,9 @@ const getDesignTokens = (mode: PaletteMode) => ({
       mode,
       primary: mode === 'light' ? { main: '#0091ea' } : { main: '#f06292' },
       secondary: mode === 'light' ? { main: blue[300] } : { main: blue[300] },
-      error: mode === 'light' ? { main: red[500] } : {main: pink[400] },
+      error: mode === 'light' ? { main: red[500] } : {main: '#ffb74d' },
       background: {
         default: mode === 'light' ? '#eeeeee' : '#403841',
-        // paper: mode === 'light' ? pink[100] : pink[100],
       },
       text: {
         primary: mode === 'light' ? blue[700] : blue[100],
