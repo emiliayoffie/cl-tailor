@@ -1,14 +1,13 @@
+import * as React from 'react';
 import MainContainer from './MainContainer';
+import { BrowserRouter as Router } from 'react-router-dom';
 import '../style.css';
-import Footer from './Footer';
-import React from 'react';
 
 const App = () => {
   return (
-    <React.Fragment>
+    <Router>
       <MainContainer />
-      <Footer />
-    </React.Fragment>
+    </Router>
   );
 };
 
