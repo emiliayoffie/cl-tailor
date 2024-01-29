@@ -1,20 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import './open-color.css';
+@import '@fontsource/roboto/300.css';
+@import '@fontsource/roboto/400.css';
+@import '@fontsource/roboto/500.css';
+@import '@fontsource/roboto/700.css';
+
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Roboto;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: var(--oc-gray-0);
-  background-color: var(--oc-gray-9);
+  /* color-scheme: light dark; */
+  /* color: var(--oc-gray-0); */
+  /* background-color: var(--oc-gray-9); */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+
 
 #root {
   display: flex;
@@ -30,13 +37,23 @@
   box-sizing: border-box;
 }
 
-a {
+/* a {
   font-weight: 500;
   color: var(--oc-indigo-2);
   text-decoration: inherit;
-}
-a:hover {
+} */
+/* a:hover {
   color: var(--oc-indigo-2);
+} */
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  text-align: center;
+  margin-top: 7vh;
+
 }
 
 body {
@@ -54,26 +71,26 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
   margin-bottom: 5vh;
-  color: var(--oc-indigo-7);
+  /* color: var(--oc-indigo-7); */
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
+  /* :root {
     color: #213547;
     background-color: var(--oc-gray-0);
-  }
-  a:hover {
+  } */
+  /* a:hover {
     color: var(--oc-indigo-2);
-  }
+  } */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    color: var(--oc-gray-9);
-    background-color: var(--oc-gray-9);
+    /* color: var(--oc-gray-9); */
+    /* background-color: var(--oc-gray-9); */
   }
 
-  .modified-letter-container {
+  /* .modified-letter-container {
     color: var(--oc-gray-3);
     border: 1px solid var(--oc-gray-6);
   }
@@ -84,28 +101,29 @@ h1 {
 
   h1 {
     color: var(--oc-blue-4);
-  }
+  } */
 }
 
 .main-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   width: 100%;
-  margin: auto;
+  padding-top: 20px;
+  padding-bottom: 20px; 
+  margin-top: 0;
+  margin-bottom: 20px; 
 }
 
 .container {
   width: 80%;
   max-width: 600px;
-  margin-top: 10vh;
-  margin-bottom: 10vh;
 }
 
 .modified-letter-container {
   margin-top: 20px;
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
   padding: 15px;
   border-radius: 5px;
   text-align: left;
@@ -115,5 +133,6 @@ h1 {
 footer {
   text-align: center;
   padding: 20px 0;
+  margin-top: 20vh;
   margin-bottom: 2vh;
 }
