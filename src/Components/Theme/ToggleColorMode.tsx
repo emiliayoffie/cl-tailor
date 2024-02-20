@@ -4,7 +4,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { PaletteMode } from '@mui/material';
-import { blue, red } from '@mui/material/colors';
+import { blue, green, red, blueGrey } from '@mui/material/colors';
 
 export const ColorModeContext = React.createContext({
   toggleColorMode: () => {},
@@ -13,16 +13,21 @@ export const ColorModeContext = React.createContext({
 const getDesignTokens = (mode: PaletteMode) => ({
   palette: {
     mode,
-    primary: mode === 'light' ? { main: '#0091ea' } : { main: '#f06292' },
-    secondary: mode === 'light' ? { main: blue[300] } : { main: blue[300] },
-    error: mode === 'light' ? { main: red[500] } : { main: '#ffb74d' },
+    primary: mode === 'light' ? { main: '#64b5f6' } : { main: '#f06292' },
+    secondary: mode === 'light' ? { main: '#2979ff' } : { main: '#81d4fa' },
+    error: mode === 'light' ? { main: '#f44336' } : { main: '#ffb74d' },
     background: {
-      default: mode === 'light' ? '#eeeeee' : '#403841',
+      default: mode === 'light' ? blue[50] : '#403841',
     },
     text: {
-      primary: mode === 'light' ? blue[700] : blue[100],
-      secondary: mode === 'light' ? blue[400] : blue[100],
+      primary: mode === 'light' ? '#42a5f5' : '#aed581',
+      secondary: mode === 'light' ? '#9e9e9e' : blue[100],
     },
+    addField: mode === 'light' ? { main: '#9ccc65' } : { main: '#aed581' },
+    homeAndBuiltBy:
+      mode === 'light' ? { main: '#ce93d8' } : { main: '#eeeeee' },
+    howToUse: mode === 'light' ? { main: '#f48fb1' } : { main: '#ffb74d' },
+    gitHub: mode === 'light' ? { main: '#9ccc65' } : { main: '#aed581' },
   },
 });
 
