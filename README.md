@@ -1,6 +1,8 @@
 # Cover Letter Tailor 
 
-A simple customizer that allows for efficient tailoring of cover letters and quick access to copy/paste functionality, with the option for downloading to PDF. 
+A simple app for tailoring cover letters for individual roles/companies. 
+
+Note: ***This is NOT a cover letter generator***. You must supply your own cover letter template. The goal of this project is to help streamline the job application process by providing quick and easy cover letter customization, along with easy access to copy/paste & download-to-PDF functionality.
 
 ## Demo 
 [Here]() is a working demo version of the client-sde app deployed to Vercel. It updates when the main branch for this repo changes. 
