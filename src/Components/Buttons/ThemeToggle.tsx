@@ -24,7 +24,7 @@ const ThemeToggle = styled(Switch)(({ theme }) => ({
       },
     },
     '& .MuiSwitch-thumb': {
-      backgroundColor: theme.palette.mode === 'dark' ? theme.palette.secondary.main : '#fff176',
+      backgroundColor: theme.palette.mode === 'dark' ? theme.palette.secondary.main : '#fff59d',
       width: 32,
       height: 32,
       '&::before': {
@@ -43,7 +43,7 @@ const ThemeToggle = styled(Switch)(({ theme }) => ({
     },
     '& .MuiSwitch-track': {
       opacity: 1,
-      backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
+      backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#ffd54f',
       borderRadius: 20 / 2,
     },
   }));
