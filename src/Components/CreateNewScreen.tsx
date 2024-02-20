@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import {
   handleCoverLetterChange,
   handleCompanyNameChange,
-  handleSubmit,
+  parseAndReplaceTemplate,
 } from '../utils';
+import DynamicFields, { Field } from './DynamicFields';
 import Button from '@mui/material/Button';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import VariantButtonGroup from './Buttons/VariantButtonGroup';
 import TextField from '@mui/material/TextField';
 import { useTheme } from '@mui/material/styles';
@@ -31,9 +33,16 @@ const CreateNewScreen = ({
   const [coverLetterError, setCoverLetterError] = useState(false);
   const [companyNameError, setCompanyNameError] = useState(false);
 
+  const [fieldNames, setFieldNames] = useState<Field[]>([]);
+  const [fieldValues, setFieldValues] = useState<string[]>([]);
+
   useEffect(() => {
     setCompanyName('');
   }, [setCompanyName]);
+
+  useEffect(() => {
+    setFieldValues(fieldNames.map(() => ''));
+  }, [fieldNames]);
 
   const generateLetter = () => {
     const isCoverLetterEmpty = !coverLetter.trim();
@@ -43,16 +52,27 @@ const CreateNewScreen = ({
     setCompanyNameError(isCompanyNameEmpty);
 
     if (!isCoverLetterEmpty && !isCompanyNameEmpty) {
-      handleSubmit(coverLetter, companyName, setModifiedLetter);
+      // const allFields = [...fields, { name: '<companyname>', value: companyName }];
+      const modifiedLetter = parseAndReplaceTemplate(
+        coverLetter,
+        { name: '<companyname>', value: companyName },
+        fieldNames,
+        fieldValues
+      );
+      setModifiedLetter(modifiedLetter);
       navigate('/generate');
     }
   };
 
   const button = [
     <Button
-      style={{ color: theme.palette.primary.main }}
+      style={{
+        color: theme.palette.primary.main,
+        textTransform: 'none',
+      }}
       onClick={generateLetter}
     >
+      <AutoAwesomeIcon />
       Generate Letter
     </Button>,
   ];
@@ -74,18 +94,18 @@ const CreateNewScreen = ({
           sx={{
             maxWidth: '75%',
             '& .MuiInputBase-input': {
-              color: theme.palette.secondary.main,
+              color: theme.palette.text.primary,
             },
             '& .MuiInputBase-input::placeholder': {
-              color: theme.palette.secondary.light,
+              color: theme.palette.text.primary,
               opacity: 1,
             },
             '& .MuiOutlinedInput-root': {
               '& fieldset': {
-                borderColor: theme.palette.secondary.main, // Default state
+                borderColor: theme.palette.primary, // Default state
               },
               '&:hover fieldset': {
-                borderColor: theme.palette.secondary.dark, // Hover state
+                borderColor: theme.palette.secondary, // Hover state
               },
               '&.Mui-focused fieldset': {
                 borderColor: theme.palette.secondary.main, // Focus state
@@ -108,18 +128,18 @@ const CreateNewScreen = ({
           sx={{
             maxWidth: '75%',
             '& .MuiInputBase-input': {
-              color: theme.palette.secondary.main,
+              color: theme.palette.text.primary,
             },
             '& .MuiInputBase-input::placeholder': {
-              color: theme.palette.secondary.light,
+              color: theme.palette.text.primary,
               opacity: 1,
             },
             '& .MuiOutlinedInput-root': {
               '& fieldset': {
-                borderColor: theme.palette.secondary.main, // Default state
+                borderColor: theme.palette.secondary, // Default state
               },
               '&:hover fieldset': {
-                borderColor: theme.palette.secondary.dark, // Hover state
+                borderColor: theme.palette.primary, // Hover state
               },
               '&.Mui-focused fieldset': {
                 borderColor: theme.palette.secondary.main, // Focus state
@@ -128,6 +148,12 @@ const CreateNewScreen = ({
           }}
           error={companyNameError}
           helperText={companyNameError ? 'Company name cannot be empty' : ''}
+        />
+        <DynamicFields
+          fieldNames={fieldNames}
+          fieldValues={fieldValues}
+          setFieldNames={setFieldNames}
+          setFieldValues={setFieldValues}
         />
         <VariantButtonGroup buttons={button} />
       </div>
