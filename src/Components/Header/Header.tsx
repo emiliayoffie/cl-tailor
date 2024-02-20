@@ -10,6 +10,7 @@ import { ColorModeContext } from '../Theme/ToggleColorMode';
 type headerProps = {
   onHowToUseClick: () => void;
 };
+// add refresh functionality to clicking on home or the title of the app
 
 const Header = ({ onHowToUseClick }: headerProps) => {
   const theme = useTheme();
@@ -17,14 +18,19 @@ const Header = ({ onHowToUseClick }: headerProps) => {
   const buttons = [
     <>
       <Link to="/" style={{ textDecoration: 'none' }}>
-        <Button key="home" style={{ color: '#eeeeee' }}>
+        <Button
+          key="home"
+          style={{ color: theme.palette.homeAndBuiltBy.main }}
+          sx={{ textTransform: 'none', fontsize: 28 }}
+        >
           Home
         </Button>
       </Link>
       <Link to="/how-to-use" style={{ textDecoration: 'none' }}>
         <Button
           key="how-to-use"
-          style={{ color: '#ffb74d' }}
+          style={{ color: theme.palette.howToUse.main }}
+          sx={{ textTransform: 'none', fontsize: 28 }}
           onClick={onHowToUseClick}
         >
           How to Use
@@ -32,7 +38,7 @@ const Header = ({ onHowToUseClick }: headerProps) => {
       </Link>
       <Button
         key="star-on-github"
-        style={{ color: '#aed581' }}
+        style={{ color: theme.palette.gitHub.main }}
         startIcon={<GitHubIcon sx={{ fontSize: 28 }} />}
         component="a"
         sx={{ textTransform: 'none' }}
@@ -56,6 +62,7 @@ const Header = ({ onHowToUseClick }: headerProps) => {
       <h1
         style={{
           color: theme.palette.primary.light,
+          marginTop: '20px',
         }}
       >
         Cover Letter Tailor
@@ -65,3 +72,9 @@ const Header = ({ onHowToUseClick }: headerProps) => {
 };
 
 export default Header;
+
+
+
+
+
+
