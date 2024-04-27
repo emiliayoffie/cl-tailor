@@ -2,6 +2,7 @@
 @import '@fontsource/roboto/400.css';
 @import '@fontsource/roboto/500.css';
 @import '@fontsource/roboto/700.css';
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
 :root {
   font-family: Roboto;
@@ -18,12 +19,20 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-#root {
+/* #root {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
   width: 100%;
+} */
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
 }
 
 #root,
@@ -31,6 +40,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 * {
@@ -39,16 +49,44 @@
   box-sizing: border-box;
 }
 
+/* .autofilled {
+  background-color: var(--your-input-background-color) !important;
+  color: var(--your-input-text-color) !important;
+} */
+
+/* header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 20px;
+  margin-top: 0;
+  text-align: center;
+  /* margin-bottom: 2vh; */
+/* background-color: var(--header-background-color); */
+/* margin-top: 7vh; */
+
 header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin-top: 7vh;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 20px;
+  /* margin-top: 20px; */
+  /* margin-right: 70px;
+  margin-left: 70px; */
 }
 
-body {
+
+
+/* header h1,
+header .button-group {
+  margin: 0 20px;
+} */
+
+/* body {
   margin: 0;
   padding: 0;
   display: flex;
@@ -57,16 +95,23 @@ body {
   min-width: 320px;
   min-height: 100vh;
   text-align: center;
+} */
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  margin: 0; /* Reset default margin */
 }
 
-h1 {
-  font-size: 3.2em;
+/* h1 {
   line-height: 1.1;
   /* margin-top: 4vh; */
-  /* margin-bottom: 5vh; */
-}
+/* margin-bottom: 5vh; */
 
-.main-container {
+/* .main-container {
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -77,13 +122,108 @@ h1 {
   padding-bottom: 10px;
   margin-top: 0;
   margin-bottom: 20px;
+} */
+
+/* .main-container {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  flex: 1 0 auto;
+  align-items: center;
+} */
+/*
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers items horizontally in the container */
+/* justify-content: center; Centers items vertically in the container */
+/* width: 100%; Takes the full width */
+/* max-width: 1200px; Adjust this value based on your design requirements */
+/* margin: auto; Centers the container itself in the viewport */
+/* min-height: 100vh; Ensures the container takes at least the height of the viewport */
+/* padding: 30px; Adds some spacing inside the container */
+/* box-sizing: border-box; Ensures padding does not add to the total width */
+/* } **/
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Adjust to keep items aligned to the top */
+  min-height: 100vh;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.content-container {
+  display: flex;
+  /* justify-content: space-around; */
+  align-items: stretch;
+  width: 100%;
+  max-width: 1200px;
+
+  /* padding: 30px; */
+  /* gap: 0px; */
+  /* margin-top: auto;  */
+  /* min-height: 400px;  */
+}
+.how-to-use,
+.content-container {
+  transition: all 0.5s ease; 
+  min-height: 100px;
 }
 
 .container {
+  flex: 1; /* Allows each container to grow and take up equal space */
+  min-width: 0; /* Prevents flex items from overflowing their container */
+  /* height: 100%; Makes the container fill the height of its parent, if defined */
+  /* min-height: 200px; */
+}
+/* .coverLetterContainer { 
+  margin-top: 44px;
+} */
+
+.how-to-use {
+  font-family: 'Lato', sans-serif;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* max-width: 700px; */
+  margin: 20px auto;
+  /* margin-bottom: 5px; */
+  overflow: hidden; /* This ensures that child elements do not bleed outside the border-radius */
+  align-self: flex-start;
+  width: 100%; /* Makes it take the full width of its parent */
+  max-width: 700px; /* Or whatever maximum width you prefer */
+  text-align: center; /* Ensures text inside is aligned left */
+}
+
+.how-to-use h1 {
+  margin: 0 auto;
+  text-align: center; /* Centers the h1 within its parent if it has a specific width */
+}
+
+.custom-hr {
+  border: none;
+  height: 1px;
+  background-color: #333;
+  width: 95%;
+  margin: 20px auto;
+}
+
+/* .container {
   width: 80%;
   max-width: 600px;
 }
 
+ */
+/*.container {
+  width: 100%; /* Takes the full width of its parent flex container */
+/*max-width: 600px; /* A bounded size for the iPad landscape size, to ensure a harmonious setting */
+/*}
 /* .container {
   display: flex;
   flex-direction: column;
@@ -91,20 +231,18 @@ h1 {
   width: 100%;
 } */
 
-.modified-letter-container {
+/* .container right-panel {
   margin-top: 20px;
   padding: 15px;
   border-radius: 5px;
   text-align: left;
   width: 100%;
-}
+} */
 
+/*
 .initial-screen {
   overflow-y: auto; /* Allows scrolling within initial-screen if content overflows */
-  max-height: calc(100vh - 120px); /* Example calculation, adjust based on your header/footer */
-}
-
-
+/* max-height: calc(100vh - 120px); /* Example calculation, adjust based on your header/footer */
 
 .dynamic-fields {
   width: 100%;
@@ -136,13 +274,13 @@ h1 {
 }
 
 footer {
+  margin-top: auto;
   text-align: center;
   padding: 20px 0;
-  margin-top: 9vh;
-  /* margin-bottom: 2vh; */
+  /* margin-bottom: 1vh; */
 }
 
-@media (max-height: 800px) {
+/* @media (max-height: 800px) {
   h1 {
     margin-top: 2vh;
     margin-bottom: 3vh;
@@ -151,5 +289,22 @@ footer {
   .container {
     padding-top: 10px;
     padding-bottom: 10px;
+  }
+} */
+
+/* Adjustments for smaller screens */
+@media (max-width: 800px) {
+  .content-container {
+    flex-direction: column;
+  }
+  .container {
+    max-width: 100%;
+  }
+}
+
+/* Ensure content doesn't overflow or get too squished on smaller screens */
+@media (max-width: 768px) {
+  .content-container {
+    flex-direction: column; /* This changes the content layout from side by side to a vertical stack on smaller screens */
   }
 }

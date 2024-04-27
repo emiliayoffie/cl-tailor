@@ -3,6 +3,9 @@ import '@mui/material/styles';
 
 declare module '@mui/material/styles' {
   interface PaletteOptions {
+    header?: {
+      main:string,
+    }
     addField?: {
       main: string;
     };
@@ -15,8 +18,20 @@ declare module '@mui/material/styles' {
     gitHub?: { 
       main: string; 
     }
+
+    coverLetter?: {
+      main: string;
+    };
+
+    subtext?: {
+      main: string;
+    };
+
   }
   interface Palette {
+    header: {
+      main: string; 
+    }; 
     addField: {
       main: string;
     };
@@ -29,5 +44,11 @@ declare module '@mui/material/styles' {
     gitHub: { 
       main: string; 
     }
+    coverLetter: {
+      main: string;
+    };
+    subtext: {  
+      main: string;
+    };
   }
 }

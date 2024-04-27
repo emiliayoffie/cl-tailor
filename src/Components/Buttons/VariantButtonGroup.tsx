@@ -18,7 +18,7 @@ export default function VariantButtonGroup({ buttons }: variantButtonGroupProps)
           },
         }}
       >
-        <ButtonGroup variant="outlined" aria-label="outlined button group">
+        <ButtonGroup variant="text" aria-label="outlined button group">
         {buttons}
         </ButtonGroup>
       </Box>

@@ -4,7 +4,7 @@ import { ThemeProvider, createTheme, alpha } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { PaletteMode } from '@mui/material';
-import { blue, green, red, blueGrey } from '@mui/material/colors';
+import { blue } from '@mui/material/colors';
 
 export const ColorModeContext = React.createContext({
   toggleColorMode: () => {},
@@ -13,28 +13,32 @@ export const ColorModeContext = React.createContext({
 const getDesignTokens = (mode: PaletteMode) => ({
   palette: {
     mode,
-    primary: mode === 'light' ? { main: '#64b5f6' } : { main: '#f06292' },
-    secondary: mode === 'light' ? { main: '#2979ff' } : { main: '#81d4fa' },
+    primary: mode === 'light' ? { main: '#ff5252' } : { main: '#f06292' },
+    secondary: mode === 'light' ? { main: '#bdbdbd' } : { main: '#81d4fa' },
     error: mode === 'light' ? { main: '#f44336' } : { main: '#ffb74d' },
     background: {
-      default: mode === 'light' ? blue[50] : '#403841',
+      default: mode === 'light' ? '#eeeeee' : '#403841',
     },
     text: {
-      primary: mode === 'light' ? '#42a5f5' : '#aed581',
+      primary: mode === 'light' ? '#757575' : '#aed581',
       secondary: mode === 'light' ? '#9e9e9e' : blue[100],
     },
+    header: mode === 'light' ? { main: '#ffccbc' } : { main: '#aed581' },
     addField: mode === 'light' ? { main: '#9ccc65' } : { main: '#aed581' },
     homeAndBuiltBy:
       mode === 'light' ? { main: '#ce93d8' } : { main: '#eeeeee' },
     howToUse: mode === 'light' ? { main: '#f48fb1' } : { main: '#ffb74d' },
     gitHub: mode === 'light' ? { main: '#9ccc65' } : { main: '#aed581' },
+    coverLetter: mode === 'light' ? { main: '#ff5252' } : { main: '#ffb74d' },
+    subtext: mode === 'light' ? { main: '#ff5252' } : { main: '#ea80fc' },
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
           '&:hover': {
-            backgroundColor: mode === 'light' ? alpha('#bbdefb', 0.5) : alpha('#f48fb1', 0.1), 
+            backgroundColor:
+              mode === 'light' ? alpha('#e0e0e0', 0.5) : alpha('#f48fb1', 0.1),
           },
         },
       },
