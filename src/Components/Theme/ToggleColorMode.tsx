@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import App from '../App';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider, createTheme, alpha } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { PaletteMode } from '@mui/material';
@@ -28,6 +28,17 @@ const getDesignTokens = (mode: PaletteMode) => ({
       mode === 'light' ? { main: '#ce93d8' } : { main: '#eeeeee' },
     howToUse: mode === 'light' ? { main: '#f48fb1' } : { main: '#ffb74d' },
     gitHub: mode === 'light' ? { main: '#9ccc65' } : { main: '#aed581' },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          '&:hover': {
+            backgroundColor: mode === 'light' ? alpha('#bbdefb', 0.5) : alpha('#f48fb1', 0.1), 
+          },
+        },
+      },
+    },
   },
 });
 
