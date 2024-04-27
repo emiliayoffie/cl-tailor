@@ -1,4 +1,6 @@
 import { useTheme } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 const Footer = () => {
   const theme = useTheme();
@@ -10,7 +12,7 @@ const Footer = () => {
       alignItems: 'center', 
       gap: '10px',
       color: theme.palette.homeAndBuiltBy.main,
-      marginTop: '230px',
+      // marginTop: '230px',
     }}>
       <div>
         Built by{' '}
@@ -26,14 +28,12 @@ const Footer = () => {
           Emilia Yoffie
         </a>
       </div>
-      {/* <a href="https://www.buymeacoffee.com/emiliayoffie" target="_blank">
-        <img 
-          src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" 
-          alt="Buy Me A Coffee" 
-          style={{ height: '40px', width: '145px' }}/>
-          </a> */}
+            
+      <a href="https://www.buymeacoffee.com/emiliayoffie"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=emiliayoffie&button_colour=8e807b&font_colour=ffffff&font_family=Cookie&outline_colour=ffffff&coffee_colour=FFDD00" /></a>
     </footer>
   );
 };
 
 export default Footer;
+
+// style="height: 60px !important;width: 217px !important;" ></a>

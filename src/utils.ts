@@ -6,8 +6,8 @@ export const handleCoverLetterChange = (
   setCoverLetter: React.Dispatch<React.SetStateAction<string>>
 ) => {
   let value = event.target.value;
-  // Trim trailing spaces
-  value = value.replace(/\s+$/, '');
+  // Allow a single trailing space but prevent multiple trailing spaces
+  value = value.replace(/\s{2,}$/, ' ');
   setCoverLetter(value);
 };
 
@@ -41,20 +41,31 @@ export const handleSubmit = (
 //   return modifiedTemplate; // Return the modified template
 // };
 
-type companyType = { name: '<companyname>', value: string };
+type companyType = { name: '<companyname>'; value: string };
 
-export const parseAndReplaceTemplate = (coverLetter: string, companyName: companyType, fieldNames: Field[], fieldValues: string[]) => {
+export const parseAndReplaceTemplate = (
+  coverLetter: string,
+  companyName: companyType,
+  fieldNames: Field[],
+  fieldValues: string[]
+) => {
   let modifiedTemplate = coverLetter;
 
   // Replace company name placeholder
   const companyNamePlaceholder = new RegExp(companyName.name, 'g');
-  modifiedTemplate = modifiedTemplate.replace(companyNamePlaceholder, companyName.value);
+  modifiedTemplate = modifiedTemplate.replace(
+    companyNamePlaceholder,
+    companyName.value
+  );
 
   // Replace other placeholders
   fieldNames.forEach((field, index) => {
     if (fieldValues[index] !== undefined) {
-      const placeholder = new RegExp(field.name, 'g'); 
-      modifiedTemplate = modifiedTemplate.replace(placeholder, fieldValues[index]);
+      const placeholder = new RegExp(field.name, 'g');
+      modifiedTemplate = modifiedTemplate.replace(
+        placeholder,
+        fieldValues[index]
+      );
     }
   });
 

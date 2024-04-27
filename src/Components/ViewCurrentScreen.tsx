@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import { jsPDF } from 'jspdf';
-import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import FileCopyOutlinedIcon from '@mui/icons-material/FileCopyOutlined';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import FileDownloadDoneIcon from '@mui/icons-material/FileDownloadDone';
+import ClearIcon from '@mui/icons-material/Clear';
 import Tooltip from '@mui/material/Tooltip';
-import GroupSizesColors from './Buttons/GroupSizesColors';
+import { useTheme } from '@mui/material/styles';
+import { Icon } from '@mui/material';
+import { jsPDF } from 'jspdf';
 
 type ViewCurrentScreenProps = {
   modifiedLetter: string;
   setModifiedLetter: React.Dispatch<React.SetStateAction<string>>;
+  resetFields: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const ViewCurrentScreen = ({
@@ -21,7 +24,24 @@ const ViewCurrentScreen = ({
   setModifiedLetter,
 }: ViewCurrentScreenProps) => {
   const [isCopied, setIsCopied] = useState(false);
-  const navigate = useNavigate();
+  const [isDownloaded, setIsDownloaded] = useState(false);
+  const theme = useTheme();
+
+  const downloadPDF = () => {
+    try {
+      const pdf = new jsPDF();
+      pdf.setFont('Helvetica');
+      pdf.setFontSize(11);
+      pdf.setLineWidth(1);
+      pdf.text(modifiedLetter, 20, 30, { align: 'left', maxWidth: 170 });
+      pdf.save('cover-letter.pdf');
+      setIsDownloaded(true);
+      setTimeout(() => setIsDownloaded(false), 3000);
+    } catch (err) {
+      console.error('Failed to download: ', err);
+      alert('Failed to download PDF.');
+    }
+  };
 
   const copyToClipboard = async () => {
     try {
@@ -38,72 +58,40 @@ const ViewCurrentScreen = ({
     setModifiedLetter(e.target.value);
   };
 
-  const downloadPDF = () => {
-    const pdf = new jsPDF();
-    pdf.setFont('Helvetica');
-    pdf.setFontSize(11);
-    pdf.setLineWidth(1);
-    pdf.text(modifiedLetter, 20, 30, { align: 'left', maxWidth: 170 });
-    pdf.save('cover-letter.pdf');
-  };
-
-  const buttons = [
-    <Button key="download" onClick={downloadPDF}>
-      Download PDF
-    </Button>,
-    <Button key="new" onClick={() => navigate('/')}>
-      Create New
-    </Button>,
-  ];
-
   return (
-    <div className="container">
-      <GroupSizesColors buttons={buttons} />
-      {modifiedLetter && (
-        <>
-          <Box
-            component="form"
-            sx={{
-              position: 'relative',
-              '& .MuiTextField-root': { m: 1, width: '100%' },
-            }}
-            noValidate
-            autoComplete="off"
-          >
-            <TextField
-              id="outlined-multiline-static"
-              label="Modified Letter"
-              multiline
-              value={modifiedLetter}
-              onChange={handleModifiedLetterChange}
-              variant="outlined"
-              fullWidth
-              InputProps={{
-                style: { minHeight: '100px' },
-              }}
-            />
-            <Tooltip title={isCopied ? 'Copied!' : 'Copy to Clipboard'}>
-              <IconButton
-                sx={{
-                  position: 'absolute',
-                  right: '10px',
-                  top: '10px',
-                  color: isCopied ? 'green' : 'inherit',
-                }}
-                onClick={copyToClipboard}
-              >
-                {isCopied ? (
-                  <CheckCircleOutlineIcon />
-                ) : (
-                  <FileCopyOutlinedIcon />
-                )}
+    <TextField
+      label="Modified Letter"
+      multiline
+      value={modifiedLetter}
+      onChange={(e) => setModifiedLetter(e.target.value)}
+      variant="outlined"
+      fullWidth
+      margin="normal"
+      InputProps={{
+        endAdornment: (
+          <InputAdornment position="end">
+            <Tooltip title={isCopied ? "Copied!" : "Copy to clipboard"}>
+              <IconButton onClick={copyToClipboard} color={isCopied ? "success" : "default"}>
+                <FileCopyOutlinedIcon />
               </IconButton>
             </Tooltip>
-          </Box>
-        </>
-      )}
-    </div>
+            <Tooltip title={isDownloaded ? "Downloaded!" : "Download as PDF"}>
+              <IconButton onClick={downloadPDF} color={isDownloaded ? "success" : "default"}>
+                <FileDownloadIcon />
+              </IconButton>
+            </Tooltip>
+          </InputAdornment>
+        ),
+      }}
+      sx={{
+        maxWidth: '75%',
+        '& .MuiOutlinedInput-root': {
+          '& fieldset': { borderColor: 'rgba(0, 0, 0, 0.23)' },
+          '&:hover fieldset': { borderColor: theme.palette.primary.main },
+          '&.Mui-focused fieldset': { borderColor: theme.palette.primary.main },
+        },
+      }}
+    />
   );
 };
-
 export default ViewCurrentScreen;

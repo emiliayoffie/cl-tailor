@@ -1,41 +1,23 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useContext } from 'react';
 import Button from '@mui/material/Button';
-import GroupSizesColors from '../Buttons/GroupSizesColors';
-import { useTheme } from '@mui/material/styles';
+import Box from '@mui/material/Box';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import ThemeToggle from '../Buttons/ThemeToggle';
 import { ColorModeContext } from '../Theme/ToggleColorMode';
+import GroupSizesColors from '../Buttons/GroupSizesColors';
+import { useTheme } from '@mui/material/styles';
 
-type headerProps = {
-  onHowToUseClick: () => void;
-};
-// add refresh functionality to clicking on home or the title of the app
-
-const Header = ({ onHowToUseClick }: headerProps) => {
+const Header = () => {
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
+  useEffect(() => {
+    document.documentElement.style.setProperty(
+      '--header-background-color',
+      theme.palette.mode === 'light' ? '#fafafa' : '#333'
+    );
+  }, [theme.palette.mode]);
   const buttons = [
     <>
-      <Link to="/" style={{ textDecoration: 'none' }}>
-        <Button
-          key="home"
-          style={{ color: theme.palette.homeAndBuiltBy.main }}
-          sx={{ textTransform: 'none', fontsize: 28 }}
-        >
-          Home
-        </Button>
-      </Link>
-      <Link to="/how-to-use" style={{ textDecoration: 'none' }}>
-        <Button
-          key="how-to-use"
-          style={{ color: theme.palette.howToUse.main }}
-          sx={{ textTransform: 'none', fontsize: 28 }}
-          onClick={onHowToUseClick}
-        >
-          How to Use
-        </Button>
-      </Link>
       <Button
         key="star-on-github"
         style={{ color: theme.palette.gitHub.main }}
@@ -58,23 +40,32 @@ const Header = ({ onHowToUseClick }: headerProps) => {
 
   return (
     <header>
+      <div className="cl-tailor-container">
+      <Box
+   sx={{
+    color: theme.palette.secondary.main,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    '& > *': {
+      m: 1,
+    },
+  }}
+>
+  <h1
+    style={{
+      color: theme.palette.primary.main,
+      fontSize: '2em',
+    }}
+  >
+    <span style={{ fontWeight: 'normal' }}>CL-</span>
+    <span style={{ fontWeight: 'bold' }}>Tailor</span>
+  </h1>
+</Box>
+      </div>
       <GroupSizesColors buttons={buttons} />
-      <h1
-        style={{
-          color: theme.palette.primary.light,
-          marginTop: '20px',
-        }}
-      >
-        Cover Letter Tailor
-      </h1>
     </header>
   );
 };
 
 export default Header;
-
-
-
-
-
-

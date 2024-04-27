@@ -5,7 +5,6 @@ import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import Box from '@mui/material/Box';
-import { blue } from '@mui/material/colors';
 import { useTheme } from '@mui/material/styles';
 
 export type Field = {
@@ -75,11 +74,13 @@ const DynamicFields = ({
             display: 'flex',
             width: '75%',
             alignItems: 'center',
-            gap: '10px',
+            // gap: '10px',
             // marginBottom: '10px',
           }}
         >
-          <Box sx={{ flexGrow: 1, display: 'flex', gap: '10px' }}>
+          <Box sx={{ flexGrow: 1, display: 'flex', 
+          gap: '10px' 
+          }}>
             <TextField
               name="name"
               label="Field Name"
@@ -99,13 +100,13 @@ const DynamicFields = ({
                 },
                 '& .MuiOutlinedInput-root': {
                   '& fieldset': {
-                    borderColor: theme.palette.primary, // Default state
+                    borderColor: theme.palette.primary.main, // Updated borderColor type to string
                   },
                   '&:hover fieldset': {
-                    borderColor: theme.palette.secondary, // Hover state
+                    borderColor: theme.palette.secondary.main, // Updated borderColor type to string
                   },
                   '&.Mui-focused fieldset': {
-                    borderColor: theme.palette.primary.main, // Focus state
+                    borderColor: theme.palette.primary.main, // Updated borderColor type to string
                   },
                 },
               }}
@@ -113,7 +114,7 @@ const DynamicFields = ({
             <TextField
               name="value"
               label="Field Value"
-              value={field.value}
+                value={field.name}
               onChange={(event) => handleFieldValueChange(index, event)}
               fullWidth
               margin="normal"
@@ -128,13 +129,13 @@ const DynamicFields = ({
                 },
                 '& .MuiOutlinedInput-root': {
                   '& fieldset': {
-                    borderColor: theme.palette.primary, // Default state
+                    borderColor: theme.palette.primary.main, //default
                   },
                   '&:hover fieldset': {
-                    borderColor: theme.palette.secondary, // Hover state
+                    borderColor: theme.palette.secondary.main,  //hover
                   },
                   '&.Mui-focused fieldset': {
-                    borderColor: theme.palette.primary.main, // Focus state
+                    borderColor: theme.palette.primary.main, //focus
                   },
                 },
               }}
@@ -157,8 +158,8 @@ const DynamicFields = ({
             color: '#ce93d8',
             textDecoration: 'none',
           },
-          marginTop: '2vh',
-          marginBottom: '2vh',
+          // marginTop: '2vh',
+          // marginBottom: '2vh',
         }}
       >
         <AddIcon /> Add Field
